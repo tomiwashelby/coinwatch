@@ -1,5 +1,6 @@
 import Hero from './components/Hero';
 import CoinsList from './components/CoinsList';
+import Footer from './components/Footer';
 
 export default async function Home() {
   const getCoins = async () => {
@@ -25,6 +26,7 @@ export default async function Home() {
     <div className='bg-[url(/cryptohero.png)] bg-no-repeat'>
       <Hero/>
       <CoinsList coins={coins}/>
+      <Footer/>
     </div>
   );
 }
