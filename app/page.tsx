@@ -4,7 +4,7 @@ import CoinsList from './components/CoinsList';
 export default async function Home() {
   const getCoins = async () => {
     try {
-      const res = await fetch('https://openapiv1.coinstats.app/coins?limit=30', {
+      const res = await fetch('https://openapiv1.coinstats.app/coins?limit=50', {
         method: 'GET',
         headers: {
           'X-API-KEY': 'AvUQcxPoOSa0Xvn9yuzHEpFcMqMin8QuvgMjptJkRHI=',
