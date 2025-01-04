@@ -3,8 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Span } from "next/dist/trace";
 
-const Coin = async ({params}: {params:{id:string}}) => {
-  const {id} = params;
+const Coin = async ({params}: {params:string}) => {
+  const id = params;
   const getCoin = async () => {
     try {
       const res = await fetch(`https://openapiv1.coinstats.app/coins/${id}`, {
