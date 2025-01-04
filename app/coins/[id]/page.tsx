@@ -1,10 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Span } from "next/dist/trace";
 
 const Coin = async ({params}: {params:any}) => {
-  const id = params;
+  const {id} = params;
   const getCoin = async () => {
     try {
       const res = await fetch(`https://openapiv1.coinstats.app/coins/${id}`, {
@@ -23,7 +22,7 @@ const Coin = async ({params}: {params:any}) => {
   const coin = await getCoin();
   console.log(coin);
   return (
-    <section className="raleway mt-8 px-2">
+    <section className="raleway py-8 px-1">
       <div className="flex flex-col items-center">
         <div className="flex items-center gap-4 text-lg md:text-xl">
           <Image src={coin.icon} width={30} height={30} alt={coin.name} className="rounded-full"/>

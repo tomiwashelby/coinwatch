@@ -30,10 +30,11 @@ const CoinsList = ({coins}:any) => {
 	}, [search, coins]);
 
 	return (
-		<section className="px-20 flex flex-col items-center template pb-12" id='coinlist'>
+		<section className="template py-8" id='coinlist'>
+			<h2 className='text-sm text-center'>Make your crypto search.</h2>
 			<Search value={search} onChange={handleSearch}/>
-			<div className='sm:container mt-12 overflow-x-auto'>
-				<table className='p-2 w-[465px] sm:w-full raleway shadow-xl rounded-xl border border-solid border-teal-900 border-collapse inter'>
+			<div className='mt-12 overflow-x-auto flex justify-center'>
+				<table className='w-[90%] shadow-2xl border border-teal-900 inter'>
 					<thead>
 						<tr>
 							{
@@ -43,7 +44,7 @@ const CoinsList = ({coins}:any) => {
 							}
 						</tr>
 					</thead>
-					<tbody className='coinlist text-[10px] sm:text-[10px] md:text-xs lg:text-sm border border-solid border-teal-950'>
+					<tbody className='coinlist text-[10px] md:text-xs lg:text-sm border border-teal-950'>
 							{
 								filteredCoins.map((coin:Coin, i:number) => {
 									const {
