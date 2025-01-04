@@ -63,7 +63,7 @@ const CoinsList = ({coins}:any) => {
 											<td className='flex items-center justify-center py-1'>
 												<div className='w-32 flex items-center py-1'>
 													<Image width={12} height={12} src={icon} alt={name} className='w-[18px] h-[18px] md:w-5 md:h-5 lg:h-6 lg:w-6 rounded-full mr-2 sm:mr-3'/>
-													<Link href={`/coins/${id}`} className='flex flex-col'>
+													<Link href={`/coins/${id}`} className='flex flex-col raleway'>
 														<span className='leading-tight tracking-wider'>{name}</span>
 														<span className='font-thin'>{symbol}</span>
 													</Link>
