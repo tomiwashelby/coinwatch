@@ -5,7 +5,7 @@ import React from 'react'
 function Hero() {
 	return (
 		<section className="w-full min-h-screen lg:-mt-16 template">
-			<div className='lg:flex lg:flex-row items-center lg:justify-between lg:px-20 lg:py-8 w-full'>
+			<div className='lg:flex lg:flex-row items-center lg:justify-between lg:px-20 lg:py-8 px-4 py-8 w-full'>
 				<div className='text-center lg:text-left'>
 					<h2 className='text-lg sm:text-[28px] md:text-4xl tracking-widest lg:tracking-wider font-medium lg:leading-tight lg:-mt-16 raleway'>The popularity of cryptocurrency grows everyday, so should your knowledge of it. Stay informed on the status of your favorite cryptos.</h2>
 					<h2 className='text-xs sm:tracking-wider md:tracking-widest mt-6 raleway w-full mb-8 lg:leading-relaxed font-extralight'>CoinWatch serves you with comfortable access to information on over a thousand cryptocurrencies. Stay abreast and monitor your portfolio.</h2>
