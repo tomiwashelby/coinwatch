@@ -4,18 +4,52 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: rgb(0, 10, 19);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: rgb(0, 10, 19);
     --foreground: #ededed;
   }
+}
+
+header {
+  font-family: "Raleway", Arial, Helvetica, sans-serif;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.raleway {
+  font-family: "Raleway", Arial, Helvetica, sans-serif;
+}
+.geistMono {
+  font-family: "Geist Mono", Arial, Helvetica, sans-serif;
+}
+.inter {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+}
+
+.template {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1400px;
+}
+
+.coinlist {
+  background: var(--background);
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Geist Mono", Arial, Helvetica, sans-serif;
+  /* background-image: url('../public/cryptohero.png');
+  background-repeat: no-repeat; */
 }
