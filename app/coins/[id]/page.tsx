@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Span } from "next/dist/trace";
 
-const Coin = async ({params}: {params:string}) => {
+const Coin = async ({params}: {params:any}) => {
   const id = params;
   const getCoin = async () => {
     try {
