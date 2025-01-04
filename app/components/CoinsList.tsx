@@ -34,7 +34,7 @@ const CoinsList = ({coins}:any) => {
 			<h2 className='text-sm text-center'>Make your crypto search.</h2>
 			<Search value={search} onChange={handleSearch}/>
 			<div className='mt-12 overflow-x-auto flex justify-center'>
-				<table className='w-[85%] shadow-2xl border border-teal-900 inter'>
+				<table className='w-[95%] shadow-2xl border border-teal-900 inter'>
 					<thead>
 						<tr>
 							{
