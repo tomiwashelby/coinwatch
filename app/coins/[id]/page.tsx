@@ -60,7 +60,7 @@ const Coin = async ({params}: {params:any}) => {
               Trading Volume : <span className="inter text-xs md:text-sm font-light">{coin.volume}</span>
             </li>
             <li className="flex justify-between items-center text-sm border-b border-b-teal-900 pb-[6px]">
-              Contract : <span className="inter text-xs md:text-sm font-light text-teal-600">{coin.contractAddress}</span>
+              Contract : <span className="inter text-xs md:text-sm font-light text-teal-600 truncate">{coin.contractAddress}</span>
             </li>
             <li className="flex justify-between items-center text-sm border-b border-b-teal-900 pb-[6px]">
               Decimals : <span className="inter text-md md:text-lg font-light text-teal-600">{coin.decimals}</span>

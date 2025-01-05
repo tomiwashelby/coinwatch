@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 export default async function Home() {
   const getCoins = async () => {
     try {
-      const res = await fetch('https://openapiv1.coinstats.app/coins?limit=50', {
+      const res = await fetch('https://openapiv1.coinstats.app/coins?limit=1000', {
         method: 'GET',
         headers: {
           'X-API-KEY': 'AvUQcxPoOSa0Xvn9yuzHEpFcMqMin8QuvgMjptJkRHI=',
