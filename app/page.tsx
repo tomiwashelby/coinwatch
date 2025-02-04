@@ -22,7 +22,6 @@ interface ApiResponse {
 export default function Home() {
   const [coins, setCoins] = useState<Coins[]>([]);
   const [loading, setLoading] = useState(true);
-  const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
   const getCoins = async () => {
     setLoading(true);
@@ -35,8 +34,8 @@ export default function Home() {
         }
       });
 
-      const data:ApiResponse = await res.json();
-      setCoins(data?.result ?? []);
+      const data: ApiResponse = await res.json();
+      setCoins(data.result);
     }
     catch(error) {
       console.log(error);
