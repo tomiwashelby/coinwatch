@@ -6,8 +6,9 @@ import Search from './Search';
 import { useState } from 'react';
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { FaArrowAltCircleRight } from "react-icons/fa";
+import { ClipLoader } from 'react-spinners';
 
-const CoinsList = ({coins}:any) => {
+const CoinsList = ({coins, loading}:any) => {
 	const tableHeads = ['Rank', 'Coin', 'Price', '24H', 'Market Cap'];
 	const [search, setSearch] = useState('');
 	const [filteredCoins, setFilteredCoins] = useState([]);
@@ -28,11 +29,15 @@ const CoinsList = ({coins}:any) => {
 	};
 
 	useEffect(() => {
-		setFilteredCoins(coins.filter((coin:any) => coin.name.toLowerCase().includes(search.toLowerCase())));
+		setFilteredCoins(
+			coins.filter((coin: Coin) => 
+				coin.name.toLowerCase().includes(search.toLowerCase())
+			)
+		);
 	}, [search, coins]);
 
 	const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 40;
+  const itemsPerPage = 25;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const paginatedCoins = filteredCoins.slice(startIndex, endIndex);
@@ -41,20 +46,25 @@ const CoinsList = ({coins}:any) => {
 	return (
 		<section className="template py-8" id='coinlist'>
 			<h2 className='text-sm text-center'>Make your crypto search.</h2>
-			<Search value={search} onChange={handleSearch}/>
+			<Search search={search} handleSearch={handleSearch}/>
 			<div className='mt-12 overflow-x-auto flex justify-center'>
-				{paginatedCoins.length > 0 && <table className='w-full md:w-[95%] shadow-2xl border border-teal-900 inter'>
-					<thead>
-						<tr>
-							{
-								tableHeads.map((tableHead:string, i:number) => (
-									<th className='bg-teal-950 text-[10px] md:text-xs lg:text-sm  border border-solid border-teal-900 p-1 font-semibold' key={i}>{tableHead}</th>
-								))
-							}
-						</tr>
-					</thead>
-					<tbody className='coinlist text-[10px] md:text-xs lg:text-sm border border-teal-950'>
-							{paginatedCoins.map((coin:Coin, i:number) => {
+				{loading ? (
+					<div className="overflow-hidden">
+						<ClipLoader size={100} color='#0f766e' className={'flex items-center justify-center mt-[4%]'}/>
+					</div>
+				) : filteredCoins.length > 0 ? (
+					<table className='w-full md:w-[95%] shadow-2xl border border-teal-900 inter'>
+						<thead>
+							<tr>
+								{
+									tableHeads.map((tableHead:string, i:number) => (
+										<th className='bg-teal-950 text-[10px] md:text-xs lg:text-sm  border border-solid border-teal-900 p-1 font-semibold' key={i}>{tableHead}</th>
+									))
+								}
+							</tr>
+						</thead>
+						<tbody className='coinlist text-[10px] md:text-xs lg:text-sm border border-teal-950'>
+								{paginatedCoins.map((coin:Coin, i:number) => {
 									const {
 										id,
 										rank,
@@ -81,17 +91,34 @@ const CoinsList = ({coins}:any) => {
 											<td className={priceChange1d < 0 ? 'text-red-600 text-center py-1' : 'text-green-600 text-center py-1'}>{priceChange1d}%</td>
 											<td className='text-center geistMono py-1'>${marketCap.toPrecision(13)}</td>
 										</tr>
-									)
-								})
-							}
-					</tbody>
-				</table>}
+									);
+								})}
+						</tbody>
+					</table>
+				) : (
+					<table className='w-full md:w-[95%] shadow-2xl border border-teal-900 inter'>
+						<thead>
+							<tr>
+								{
+									tableHeads.map((tableHead:string, i:number) => (
+										<th className='bg-teal-950 text-[10px] md:text-xs lg:text-sm  border border-solid border-teal-900 p-1 font-semibold' key={i}>{tableHead}</th>
+									))
+								}
+							</tr>
+						</thead>
+						<tbody className='coinlist text-[10px] md:text-xs lg:text-sm border border-teal-950'>
+							<tr className='border border-solid border-teal-950 w-full'>
+								<td colSpan={5} className="text-center text-xs sm:text-sm p-4">No coins found.</td>
+							</tr>
+						</tbody>
+					</table>
+				)}
 			</div>
-			{(search === '' && paginatedCoins.length) && (<div className="flex justify-between items-center mt-2 py-4 px-6 md:px-10 coinlist w-full md:w-[95%] mx-auto border border-teal-950">
+			{(search === '' && paginatedCoins.length > 0) && (<div className="flex justify-between items-center mt-2 py-4 px-6 md:px-10 coinlist w-full md:w-[95%] mx-auto border border-teal-950">
 				<button
 					disabled={currentPage === 1}
 					onClick={() => setCurrentPage((prev) => prev - 1)}
-					className="text-teal-800 text-xl md:text-2xl cursor-pointer"
+					className={currentPage === 1 ? "text-teal-950 text-xl md:text-2xl cursor-pointer" : "text-teal-800 text-xl md:text-2xl cursor-pointer"}
 				>
 					<FaArrowAltCircleLeft />
 				</button>
@@ -101,7 +128,7 @@ const CoinsList = ({coins}:any) => {
 				<button
 					disabled={currentPage === totalPages}
 					onClick={() => setCurrentPage((prev) => prev + 1)}
-					className="text-teal-800 text-xl md:text-2xl cursor-pointer"
+					className={currentPage === totalPages ? "text-teal-950 text-xl md:text-2xl cursor-pointer" : "text-teal-800 text-xl md:text-2xl cursor-pointer"}
 				>
 					<FaArrowAltCircleRight />
 				</button>

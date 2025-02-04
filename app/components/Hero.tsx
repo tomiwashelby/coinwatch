@@ -4,7 +4,7 @@ import React from 'react'
 
 function Hero() {
 	return (
-		<section className="w-full min-h-screen lg:-mt-16 template">
+		<section className="w-full min-h-screen lg:-mt-10 template">
 			<div className='lg:flex lg:flex-row items-center lg:justify-between lg:px-20 lg:py-8 px-4 py-8 sm:p-8 w-full'>
 				<div className='text-center lg:text-left'>
 					<h2 className='text-lg sm:text-[28px] md:text-4xl tracking-widest lg:tracking-wider font-medium md:leading-tight lg:-mt-16 raleway'>The popularity of cryptocurrency grows everyday, so should your knowledge of it. Stay informed on the status of your favorite cryptos.</h2>
