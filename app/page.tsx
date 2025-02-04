@@ -30,13 +30,13 @@ export default function Home() {
       const res = await fetch('https://openapiv1.coinstats.app/coins?limit=1000&cache_bust=' + new Date().getTime(), {
         method: 'GET',
         headers: {
-          'X-API-KEY': `${API_KEY}`,
+          'X-API-KEY': 'AvUQcxPoOSa0Xvn9yuzHEpFcMqMin8QuvgMjptJkRHI=',
           'Accept': 'application/json'
         }
       });
 
-      const data: ApiResponse = await res.json();
-      setCoins(data.result);
+      const data:ApiResponse = await res.json();
+      setCoins(data?.result ?? []);
     }
     catch(error) {
       console.log(error);
